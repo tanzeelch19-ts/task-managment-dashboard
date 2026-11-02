@@ -7,10 +7,10 @@ import Button from '../ui/Button';
 import Card from '../ui/Card';
 import EmptyState from '../ui/EmptyState';
 import ProgressBar from '../ui/ProgressBar';
-import DashboardCard from '../components/Dashboardcard.jsx';
-import useTasks from '../Hooks/useTasks.js';
-import useProjects from '../Hooks/useProjects.js';
-import useDocumentTitle from '../Hooks/useDocumentTitle.js';
+import DashboardCard from '../components/DashboardCard';
+import useTasks from '../hooks/useTasks.js';
+import useProjects from '../hooks/useProjects.js';
+import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import { TASK_STATUS } from '../utils/constants';
 import { formatDateTime } from '../utils/dateHelpers';
 import {

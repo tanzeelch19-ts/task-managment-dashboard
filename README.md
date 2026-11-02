@@ -6,11 +6,11 @@ Data is stored in the browser's **localStorage** by default (works out of the bo
 
 | Dashboard | Projects |
 | --- | --- |
-| ![Dashboard](public/01-dashboard.png) | ![Projects](public/02-projects.png) |
+| ![Dashboard](public/screenshots/01-dashboard.png) | ![Projects](public/screenshots/02-projects.png) |
 
 | Tasks (search, filters, sorting) |
 | --- |
-| ![Tasks](public/03-tasks.png) |
+| ![Tasks](public/screenshots/03-tasks.png) |
 
 ---
 
@@ -107,29 +107,33 @@ Dashboard, Projects, Project Details, Tasks and Create/Edit Task pages with Reac
 
 ```
 task-management-dashboard/
-├── public/favicon.svg
+├── public/
+│   ├── favicon.svg
+│   └── screenshots/           01-dashboard.png, 02-projects.png, 03-tasks.png
 ├── index.html
+├── vercel.json                Sends every route to index.html (direct links work on Vercel)
 ├── .env.example               VITE_API_BASE_URL (leave empty for localStorage)
 └── src/
     ├── main.jsx               Entry: mounts <App /> inside <BrowserRouter>
     ├── App.jsx                Route table (all pages render inside <Layout />)
-    ├── index.css              Tailwind import + theme tokens (colours, radii, shadows)
+    ├── index.css              Tailwind import + theme tokens
     │
     ├── pages/                 One file per screen
     │   ├── Dashboard.jsx
     │   ├── Projects.jsx
-    │   ├── Projectdetails.jsx
+    │   ├── ProjectDetails.jsx
     │   ├── Tasks.jsx
-    │   ├── TaskForm.jsx       Create + edit (mode decided by the URL)
-    │   ├── Taskdetails.jsx    Read-only task view
+    │   ├── TaskFormPage.jsx   Create + edit (mode decided by the URL)
+    │   ├── TaskDetails.jsx    Read-only task view
     │   └── NotFound.jsx
     │
     ├── components/            Reusable, mostly presentational pieces
     │   ├── Layout.jsx, Navbar.jsx, Sidebar.jsx
-    │   ├── Dashboardcard.jsx
+    │   ├── ErrorBoundary.jsx  Catches render errors, offers "Reset sample data"
+    │   ├── DashboardCard.jsx
     │   ├── ProjectCard.jsx, ProjectForm.jsx
-    │   ├── TableTask.jsx      Table on desktop, cards on mobile
-    │   ├── Taskform.jsx       One form for create AND edit
+    │   ├── TaskTable.jsx      Table on desktop, cards on mobile
+    │   ├── TaskForm.jsx       One form for create AND edit
     │   ├── TaskFilters.jsx, SearchBar.jsx
     │   └── ConfirmDialog.jsx
     │
@@ -137,7 +141,7 @@ task-management-dashboard/
     │                          DetailItem, EmptyState, FormField, Loader, Modal,
     │                          OverdueTag, PageHeader, ProgressBar, controlClass
     │
-    ├── Hooks/                 useTasks, useProjects, useTaskFilters,
+    ├── hooks/                 useTasks, useProjects, useTaskFilters,
     │                          useConfirmDelete, useFlash, useDocumentTitle
     │
     ├── services/              The ONLY place that talks to data
@@ -147,13 +151,14 @@ task-management-dashboard/
     │
     ├── utils/                 Pure functions (no React)
     │   ├── taskHelpers.js, validators.js, dateHelpers.js, constants.js
-    │   ├── Filterparams.js    Filters <-> URL query string
+    │   ├── filterParams.js    Filters <-> URL query string
     │   └── csvExport.js       CSV export of the visible tasks
     │
-    └── data/seedData.js       Sample projects and tasks
+    ├── data/seedData.js       Sample projects and tasks
+    └── tests/                 Vitest tests for the pure functions
 ```
 
-> File names are case-sensitive on Linux (Vercel, Netlify, GitHub Actions). Imports must match the file name exactly.
+Naming rules: components are `PascalCase.jsx`, hooks and utils are `camelCase.js`, folders are lowercase. File names are case-sensitive on Linux (Vercel, Netlify, GitHub Actions), so an import must match the file name exactly. Run `npm run build` before every push.
 
 ## 5a. Theme
 
@@ -223,3 +228,5 @@ Limits and option lists live in `src/utils/constants.js`; change them there once
 | `npm run dev` | Start the dev server with hot reload |
 | `npm run build` | Create the production build in `dist/` |
 | `npm run preview` | Serve the production build locally |
+| `npm test` | Run the unit tests (Vitest) |
+| `npm run lint` | Check the code with oxlint |

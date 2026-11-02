@@ -6,10 +6,10 @@ import Alert from '../ui/Alert';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
 import EmptyState from '../ui/EmptyState';
-import TaskForm from '../components/Taskform';
-import useTasks from '../Hooks/useTasks';
-import useProjects from '../Hooks/useProjects';
-import useDocumentTitle from '../Hooks/useDocumentTitle';
+import TaskForm from '../components/TaskForm';
+import useTasks from '../hooks/useTasks';
+import useProjects from '../hooks/useProjects';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 // Module 5: ONE page for both "create task" (/tasks/new) and "edit task"
 // (/tasks/:taskId/edit). The presence of :taskId in the URL decides the mode.

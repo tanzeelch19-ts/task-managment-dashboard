@@ -2,10 +2,10 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Projects from './pages/Projects';
-import ProjectDetails from './pages/Projectdetails';
+import ProjectDetails from './pages/ProjectDetails';
 import Tasks from './pages/Tasks';
 import TaskDetails from './pages/Taskdetails';
-import TaskFormPage from './pages/TaskForm';
+import TaskFormPage from './pages/TaskFormPage';
 import NotFound from './pages/NotFound';
 
 // The route table. Every page is rendered inside <Layout /> (navbar + sidebar),

@@ -30,7 +30,12 @@ function readCollection(name) {
       return seed;
     }
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
+    // Drop anything that is not a record with an id and a text title/name
+    // (a damaged entry would otherwise crash the pages that render it).
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter(
+      (item) => item && typeof item === 'object' && item.id !== undefined && typeof (item.title ?? item.name) === 'string',
+    );
   } catch {
     throw new Error('Could not read saved data from the browser storage.');
   }
