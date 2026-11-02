@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { DEFAULT_TASK_FILTERS } from '../utils/constants';
 import { filterAndSortTasks, hasActiveFilters } from '../utils/taskHelpers';
-import { filtersFromParams, paramsFromFilters } from '../utils/filterParams';
+import { filtersFromParams, paramsFromFilters } from '../utils/filterparams';
 
 /**
  * Holds the search / filter / sort state for a task list and returns the

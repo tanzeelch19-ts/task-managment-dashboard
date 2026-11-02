@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { DEFAULT_TASK_FILTERS } from '../utils/constants';
-import { filtersFromParams, paramsFromFilters } from '../utils/filterParams';
+import { filtersFromParams, paramsFromFilters } from '../utils/filterparams';
 
 describe('filtersFromParams', () => {
   it('returns the defaults for an empty query string', () => {
