@@ -8,9 +8,9 @@ import Card from '../ui/Card.jsx';
 import EmptyState from '../ui/EmptyState.jsx';
 import ProgressBar from '../ui/ProgressBar.jsx';
 import DashboardCard from '../components/Dashboardcard.jsx';
-import useTasks from '../useTasks.js';
-import useProjects from '../useProjects.js';
-import useDocumentTitle from '../useDocumentTitle.js';
+import useTasks from '../Hooks/useTasks.js';
+import useProjects from '../Hooks/useProjects.js';
+import useDocumentTitle from '../Hooks/useDocumentTitle.js';
 import { TASK_STATUS } from '../utils/constants.js';
 import { formatDateTime } from '../utils/dateHelpers.js';
 import {
