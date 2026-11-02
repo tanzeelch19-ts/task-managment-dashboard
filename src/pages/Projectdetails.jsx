@@ -1,26 +1,26 @@
 import { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import PageHeader from '../ui/PageHeader';
-import Loader from '../ui/Loader';
-import Alert from '../ui/Alert';
-import Badge from '../ui/Badge';
-import Button from '../ui/Button';
-import Card from '../ui/Card';
-import DetailItem from '../ui/DetailItem';
-import EmptyState from '../ui/EmptyState';
-import ProgressBar from '../ui/ProgressBar';
-import TaskFilters from '../components/TaskFilters';
-import TaskTable from '../components/TaskTable';
-import ConfirmDialog from '../components/ConfirmDialog';
-import useProjects from '../hooks/useProjects';
-import useTasks from '../hooks/useTasks';
-import useTaskFilters from '../hooks/useTaskFilters';
-import useFlash from '../hooks/useFlash';
-import useConfirmDelete from '../hooks/useConfirmDelete';
-import useDocumentTitle from '../hooks/useDocumentTitle';
-import { TASK_STATUS } from '../utils/constants';
-import { formatDate } from '../utils/dateHelpers';
-import { getProjectProgress, getTasksForProject } from '../utils/taskHelpers';
+import PageHeader from '../../ui/PageHeader';
+import Loader from '../../ui/Loader';
+import Alert from '../../ui/Alert';
+import Badge from '../../ui/Badge';
+import Button from '../../ui/Button';
+import Card from '../../ui/Card';
+import DetailItem from '../../ui/DetailItem';
+import EmptyState from '../../ui/EmptyState';
+import ProgressBar from '../../ui/ProgressBar';
+import TaskFilters from '../../components/TaskFilters';
+import TaskTable from '../../components/TaskTable';
+import ConfirmDialog from '../../components/ConfirmDialog';
+import useProjects from '../useProjects';
+import useTasks from '../useTasks';
+import useTaskFilters from '../useTaskFilters';
+import useFlash from '../useFlash';
+import useConfirmDelete from '../useConfirmDelete';
+import useDocumentTitle from '../useDocumentTitle';
+import { TASK_STATUS } from '../../utils/constants';
+import { formatDate } from '../../utils/dateHelpers';
+import { getProjectProgress, getTasksForProject } from '../../utils/taskHelpers';
 
 // A stable empty array: keeps useMemo/useTaskFilters from re-running while the
 // project is still loading.

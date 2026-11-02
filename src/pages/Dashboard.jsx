@@ -1,25 +1,25 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import Loader from '../ui/Loader';
-import Alert from '../ui/Alert';
-import Badge from '../ui/Badge';
-import Button from '../ui/Button';
-import Card from '../ui/Card';
-import EmptyState from '../ui/EmptyState';
-import ProgressBar from '../ui/ProgressBar';
-import DashboardCard from '../components/DashboardCard';
-import useTasks from '../hooks/useTasks.js';
-import useProjects from '../hooks/useProjects.js';
-import useDocumentTitle from '../hooks/useDocumentTitle.js';
-import { TASK_STATUS } from '../utils/constants';
-import { formatDateTime } from '../utils/dateHelpers';
+import Loader from '../../ui/Loader.jsx';
+import Alert from '../../ui/Alert.jsx';
+import Badge from '../../ui/Badge.jsx';
+import Button from '../../ui/Button.jsx';
+import Card from '../../ui/Card.jsx';
+import EmptyState from '../../ui/EmptyState.jsx';
+import ProgressBar from '../../ui/ProgressBar.jsx';
+import DashboardCard from '../../components/DashboardCard.jsx';
+import useTasks from '../useTasks.js';
+import useProjects from '../useProjects.js';
+import useDocumentTitle from '../useDocumentTitle.js';
+import { TASK_STATUS } from '../../utils/constants.js';
+import { formatDateTime } from '../../utils/dateHelpers.js';
 import {
   getAttentionSummary,
   getRecentTasks,
   getTaskStats,
   groupTasksByStatus,
   indexById,
-} from '../utils/taskHelpers';
+} from '../../utils/taskHelpers.js';
 
 // Icon paths (24x24, stroke) for the summary cards.
 const ICONS = {

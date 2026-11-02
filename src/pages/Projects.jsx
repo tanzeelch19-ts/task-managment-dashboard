@@ -8,11 +8,11 @@ import Modal from '../ui/Modal';
 import ProjectCard from '../components/ProjectCard';
 import ProjectForm from '../components/ProjectForm';
 import ConfirmDialog from '../components/ConfirmDialog';
-import useProjects from '../hooks/useProjects';
-import useTasks from '../hooks/useTasks';
-import useFlash from '../hooks/useFlash';
-import useConfirmDelete from '../hooks/useConfirmDelete';
-import useDocumentTitle from '../hooks/useDocumentTitle';
+import useProjects from '../Hooks/useProjects';
+import useTasks from '../Hooks/useTasks';
+import useFlash from '../Hooks/useFlash';
+import useConfirmDelete from '../Hooks/useConfirmDelete';
+import useDocumentTitle from '../Hooks/useDocumentTitle';
 
 // Module 2: view all projects, create, edit, delete (with confirmation) and
 // open a project. The create/edit form lives in a dialog on this page.

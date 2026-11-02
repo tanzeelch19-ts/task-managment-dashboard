@@ -7,12 +7,12 @@ import EmptyState from '../ui/EmptyState';
 import TaskFilters from '../components/TaskFilters';
 import TaskTable from '../components/TaskTable';
 import ConfirmDialog from '../components/ConfirmDialog';
-import useTasks from '../hooks/useTasks';
-import useProjects from '../hooks/useProjects';
-import useTaskFilters from '../hooks/useTaskFilters';
-import useFlash from '../hooks/useFlash';
-import useConfirmDelete from '../hooks/useConfirmDelete';
-import useDocumentTitle from '../hooks/useDocumentTitle';
+import useTasks from '../Hooks/useTasks';
+import useProjects from '../Hooks/useProjects';
+import useTaskFilters from '../Hooks/useTaskFilters';
+import useFlash from '../Hooks/useFlash';
+import useConfirmDelete from '../Hooks/useConfirmDelete';
+import useDocumentTitle from '../Hooks/useDocumentTitle';
 import { indexById } from '../utils/taskHelpers';
 import { buildTasksCsv, downloadCsv } from '../utils/csvExport';
 
