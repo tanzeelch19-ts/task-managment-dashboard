@@ -20,7 +20,7 @@ import useConfirmDelete from '../Hooks/useConfirmDelete';
 import useDocumentTitle from '../Hooks/useDocumentTitle';
 import { TASK_STATUS } from '../utils/constants';
 import { formatDate } from '../utils/dateHelpers';
-import { getProjectProgress, getTasksForProject } from '../../utils/taskHelpers';
+import { getProjectProgress, getTasksForProject } from '../utils/taskHelpers';
 
 // A stable empty array: keeps useMemo/useTaskFilters from re-running while the
 // project is still loading.
