@@ -19,7 +19,7 @@ import {
   getTaskStats,
   groupTasksByStatus,
   indexById,
-} from '../../utils/taskHelpers.js';
+} from '../utils/taskHelpers.js';
 
 // Icon paths (24x24, stroke) for the summary cards.
 const ICONS = {
