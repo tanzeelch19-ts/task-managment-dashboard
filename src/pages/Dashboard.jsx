@@ -1,18 +1,18 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import Loader from '../../ui/Loader.jsx';
-import Alert from '../../ui/Alert.jsx';
-import Badge from '../../ui/Badge.jsx';
-import Button from '../../ui/Button.jsx';
-import Card from '../../ui/Card.jsx';
-import EmptyState from '../../ui/EmptyState.jsx';
-import ProgressBar from '../../ui/ProgressBar.jsx';
-import DashboardCard from '../../components/DashboardCard.jsx';
+import Loader from '../ui/Loader.jsx';
+import Alert from '../ui/Alert.jsx';
+import Badge from '../ui/Badge.jsx';
+import Button from '../ui/Button.jsx';
+import Card from '../ui/Card.jsx';
+import EmptyState from '../ui/EmptyState.jsx';
+import ProgressBar from '../ui/ProgressBar.jsx';
+import DashboardCard from '../components/Dashboardcard.jsx';
 import useTasks from '../useTasks.js';
 import useProjects from '../useProjects.js';
 import useDocumentTitle from '../useDocumentTitle.js';
-import { TASK_STATUS } from '../../utils/constants.js';
-import { formatDateTime } from '../../utils/dateHelpers.js';
+import { TASK_STATUS } from '../utils/constants.js';
+import { formatDateTime } from '../utils/dateHelpers.js';
 import {
   getAttentionSummary,
   getRecentTasks,
