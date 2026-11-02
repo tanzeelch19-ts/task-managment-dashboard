@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Avatar from '../ui/Avatar';
 import Badge from '../ui/Badge';
 import Button from '../ui/Button';
-import ProgressBar from '../ui/ProgressBar';
+import ProgressBar from '../ui/Progressbar';
 import { TASK_STATUS } from '../utils/constants';
 import { formatDate } from '../utils/dateHelpers';
 import { getProjectProgress } from '../utils/taskHelpers';
