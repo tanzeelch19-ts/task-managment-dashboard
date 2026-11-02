@@ -6,7 +6,7 @@ import Badge from '../ui/Badge';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
 import EmptyState from '../ui/EmptyState';
-import ProgressBar from '../ui/Progressbar';
+import ProgressBar from '../ui/ProgressBar';
 import DashboardCard from '../components/Dashboardcard.jsx';
 import useTasks from '../Hooks/useTasks.js';
 import useProjects from '../Hooks/useProjects.js';
