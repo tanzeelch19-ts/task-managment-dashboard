@@ -16,8 +16,8 @@ import useProjects from '../Hooks/useProjects';
 import useFlash from '../Hooks/seFlash';
 import useConfirmDelete from '../Hooks/useConfirmDelete';
 import useDocumentTitle from '../Hooks/useDocumentTitle';
-import { formatDate, formatDateTime } from '../../utils/dateHelpers';
-import { isOverdue } from '../../utils/taskHelpers';
+import { formatDate, formatDateTime } from '../utils/dateHelpers';
+import { isOverdue } from '../utils/taskHelpers';
 
 const BACK_LINK =
   'mb-3.5 inline-flex items-center gap-1.5 text-[0.9rem] font-semibold text-muted no-underline hover:text-primary';
