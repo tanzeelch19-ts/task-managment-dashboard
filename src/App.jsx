@@ -5,7 +5,7 @@ import Projects from './pages/Projects';
 import ProjectDetails from './pages/ProjectDetails';
 import Tasks from './pages/Tasks';
 import TaskDetails from './pages/Taskdetails';
-import TaskFormPage from './pages/TaskFormPage';
+import TaskFormPage from './pages/TaskForm';
 import NotFound from './pages/NotFound';
 
 // The route table. Every page is rendered inside <Layout /> (navbar + sidebar),

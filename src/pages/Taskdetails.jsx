@@ -9,7 +9,7 @@ import Button from '../ui/Button';
 import Card from '../ui/Card';
 import DetailItem from '../ui/DetailItem';
 import EmptyState from '../ui/EmptyState';
-import OverdueTag from '../ui/OverdueTag';
+import OverdueTag from '../ui/OverTag';
 import ConfirmDialog from '../components/ConfirmDialog';
 import useTasks from '../hooks/useTasks';
 import useProjects from '../hooks/useProjects';

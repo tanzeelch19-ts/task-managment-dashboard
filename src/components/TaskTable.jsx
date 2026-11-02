@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Avatar from '../ui/Avatar';
 import Badge from '../ui/Badge';
 import Button from '../ui/Button';
-import OverdueTag from '../ui/OverdueTag';
+import OverdueTag from '../ui/OverTag';
 import { formatDate } from '../utils/dateHelpers';
 import { isOverdue } from '../utils/taskHelpers';
 
