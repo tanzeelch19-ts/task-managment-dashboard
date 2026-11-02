@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import FormField from '../ui/FormField';
 import Alert from '../ui/Alert';
 import Button from '../ui/Button';
-import { controlClass } from '../ui/controlClass';
+import { controlClass } from '../ui/controlClass.js';
 import { LIMITS, PROJECT_STATUS, PROJECT_STATUS_OPTIONS } from '../utils/constants';
 import { todayISO } from '../utils/dateHelpers';
 import { hasErrors, validateProject } from '../utils/validators';
