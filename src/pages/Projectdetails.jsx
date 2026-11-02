@@ -8,7 +8,7 @@ import Button from '../ui/Button';
 import Card from '../ui/Card';
 import DetailItem from '../ui/DetailItem';
 import EmptyState from '../ui/EmptyState';
-import ProgressBar from '../ui/ProgressBar';
+import ProgressBar from '../ui/Progressbar';
 import TaskFilters from '../components/TaskFilters';
 import TaskTable from '../components/TableTask';
 import ConfirmDialog from '../components/ConfirmDialog';
