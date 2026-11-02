@@ -2,7 +2,7 @@
 export default function Loader({ label = 'Loading…' }) {
   return (
     <div
-      className="flex items-center justify-center gap-3 px-4 py-[72px] font-medium text-muted"
+      className="flex items-center justify-center gap-3 px-4  py-18 font-medium text-muted"
       role="status"
       aria-live="polite"
     >
