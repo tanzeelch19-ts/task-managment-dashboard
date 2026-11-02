@@ -1,5 +1,5 @@
-import Button from '../../ui/Button';
-import EmptyState from '../../ui/EmptyState';
+import Button from '../ui/Button';
+import EmptyState from '../ui/EmptyState';
 import useDocumentTitle from '../useDocumentTitle';
 
 // Shown for any URL that does not match a route.
