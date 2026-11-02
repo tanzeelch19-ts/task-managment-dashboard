@@ -13,7 +13,7 @@ import OverdueTag from '../ui/OverTag';
 import ConfirmDialog from '../components/ConfirmDialog';
 import useTasks from '../Hooks/useTasks';
 import useProjects from '../Hooks/useProjects';
-import useFlash from '../Hooks/usrFlash';
+import useFlash from '../Hooks/useFlash';
 import useConfirmDelete from '../Hooks/useConfirmDelete';
 import useDocumentTitle from '../Hooks/useDocumentTitle';
 import { formatDate, formatDateTime } from '../utils/dateHelpers';
