@@ -1,0 +1,128 @@
+/* ==========================================================================
+   index.css — the ONLY stylesheet. Everything else is Tailwind utility
+   classes written directly in the JSX files.
+
+   1. @theme    the design tokens (colours, radii, shadows, font). Every token
+                becomes a utility automatically, e.g. --color-primary ->
+                bg-primary / text-primary / border-primary.
+   2. @layer base   page-level defaults (body, links, focus ring).
+   3. @utility      two gradients that are too long for an inline class.
+
+   Theme in one line: a deep plum frame (navbar + sidebar) around a light,
+   lavender-tinted content panel; violet is the only brand colour. Status
+   colours (amber / blue / green) always mean the same thing everywhere.
+   ========================================================================== */
+
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    Roboto, Arial, sans-serif;
+
+  /* Frame (navbar + sidebar) */
+  --color-shell: #1f0d38;
+
+  /* Content */
+  --color-canvas: #f6f4fa;
+  --color-line: #e8e4f1;
+  --color-line-strong: #cfc8e0;
+  --color-ink: #1e1530;
+  --color-muted: #6b6480;
+
+  /* Brand */
+  --color-primary: #6d3df0;
+  --color-primary-hover: #5a2dd4;
+  --color-primary-soft: #f0eafe;
+
+  /* Status colours: Todo = warning, In Progress = info, Done = success */
+  --color-danger: #be1d3a;
+  --color-danger-hover: #9b1630;
+  --color-danger-soft: #fde8ec;
+  --color-success: #12805c;
+  --color-success-soft: #dcf5ea;
+  --color-info: #1d5fd1;
+  --color-info-soft: #e3edff;
+  --color-warning: #9a4d07;
+  --color-warning-soft: #fdf0d3;
+
+  /* Shape: hero & modal / cards / buttons & inputs */
+  --radius-hero: 1.25rem;
+  --radius-card: 1rem;
+  --radius-control: 0.625rem;
+
+  /* Depth: shadows are tinted with the plum instead of grey */
+  --shadow-card: 0 1px 2px rgb(36 16 64 / 0.06), 0 1px 1px rgb(36 16 64 / 0.04);
+  --shadow-button: 0 6px 14px -6px rgb(109 61 240 / 0.75);
+  --shadow-hero: 0 22px 44px -22px rgb(88 40 200 / 0.7);
+  --shadow-pop: 0 30px 70px -20px rgb(24 8 48 / 0.6);
+
+  /* Motion: the dialog eases in, the hero ring fills once on load */
+  --animate-modal-in: modal-in 0.18s ease-out;
+  --animate-ring-fill: ring-fill 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.98);
+    }
+  }
+
+  @keyframes ring-fill {
+    from {
+      --ring: 0;
+    }
+  }
+}
+
+/* Registered so the completion ring can animate smoothly from 0 to its value. */
+@property --ring {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-canvas font-sans text-[0.9375rem] leading-[1.55] text-ink antialiased;
+  }
+
+  /* Tailwind's reset makes links inherit; plain links should look like links. */
+  a {
+    color: var(--color-primary);
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 3px solid rgb(109 61 240 / 0.28);
+    outline-offset: 2px;
+  }
+}
+
+/* The dashboard hero (the one bold element of the theme). */
+@utility hero-surface {
+  background-image:
+    radial-gradient(90% 150% at 100% 0%, rgb(236 72 153 / 0.55), transparent 58%),
+    linear-gradient(120deg, #3b1580 0%, #6d3df0 62%, #8b4df6 100%);
+}
+
+/* Completion ring: --pct (0-100) is set inline from React; --ring animates to it. */
+@utility hero-ring {
+  --ring: var(--pct);
+  background: conic-gradient(#fff calc(var(--ring) * 1%), rgb(255 255 255 / 0.2) 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
