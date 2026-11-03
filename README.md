@@ -6,11 +6,11 @@ Data is stored in the browser's **localStorage** by default (works out of the bo
 
 | Dashboard | Projects |
 | --- | --- |
-| ![Dashboard](public/screenshots/01-dashboard.png) | ![Projects](public/screenshots/02-projects.png) |
+| ![Dashboard](public/01-dashboard.png) | ![Projects](public/02-projects.png) |
 
 | Tasks (search, filters, sorting) |
 | --- |
-| ![Tasks](public/screenshots/03-tasks.png) |
+| ![Tasks](public/03-projects.png) |
 
 ---
 
@@ -109,7 +109,7 @@ Dashboard, Projects, Project Details, Tasks and Create/Edit Task pages with Reac
 task-management-dashboard/
 ├── public/
 │   ├── favicon.svg
-│   └── screenshots/           01-dashboard.png, 02-projects.png, 03-tasks.png
+│   └── 01-dashboard.png, 02-projects.png, 03-projects.png   README screenshots (03 shows the Tasks page)
 ├── index.html
 ├── vercel.json                Sends every route to index.html (direct links work on Vercel)
 ├── .env.example               VITE_API_BASE_URL (leave empty for localStorage)
@@ -121,27 +121,27 @@ task-management-dashboard/
     ├── pages/                 One file per screen
     │   ├── Dashboard.jsx
     │   ├── Projects.jsx
-    │   ├── ProjectDetails.jsx
+    │   ├── Projectdetails.jsx
     │   ├── Tasks.jsx
-    │   ├── TaskFormPage.jsx   Create + edit (mode decided by the URL)
-    │   ├── TaskDetails.jsx    Read-only task view
+    │   ├── TaskForm.jsx       Create + edit (mode decided by the URL)
+    │   ├── Taskdetails.jsx    Read-only task view
     │   └── NotFound.jsx
     │
     ├── components/            Reusable, mostly presentational pieces
     │   ├── Layout.jsx, Navbar.jsx, Sidebar.jsx
     │   ├── ErrorBoundary.jsx  Catches render errors, offers "Reset sample data"
-    │   ├── DashboardCard.jsx
+    │   ├── Dashboardcard.jsx
     │   ├── ProjectCard.jsx, ProjectForm.jsx
     │   ├── TaskTable.jsx      Table on desktop, cards on mobile
-    │   ├── TaskForm.jsx       One form for create AND edit
+    │   ├── Taskform.jsx       One form for create AND edit
     │   ├── TaskFilters.jsx, SearchBar.jsx
     │   └── ConfirmDialog.jsx
     │
     ├── ui/                    Tiny generic blocks: Alert, Avatar, Badge, Button, Card,
     │                          DetailItem, EmptyState, FormField, Loader, Modal,
-    │                          OverdueTag, PageHeader, ProgressBar, controlClass
+    │                          OverTag, PageHeader, ProgressBar, controlClass
     │
-    ├── hooks/                 useTasks, useProjects, useTaskFilters,
+    ├── Hooks/                 useTasks, useProjects, useTaskFilters,
     │                          useConfirmDelete, useFlash, useDocumentTitle
     │
     ├── services/              The ONLY place that talks to data
@@ -151,14 +151,14 @@ task-management-dashboard/
     │
     ├── utils/                 Pure functions (no React)
     │   ├── taskHelpers.js, validators.js, dateHelpers.js, constants.js
-    │   ├── filterParams.js    Filters <-> URL query string
+    │   ├── Filterparams.js    Filters <-> URL query string
     │   └── csvExport.js       CSV export of the visible tasks
     │
     ├── data/seedData.js       Sample projects and tasks
     └── tests/                 Vitest tests for the pure functions
 ```
 
-Naming rules: components are `PascalCase.jsx`, hooks and utils are `camelCase.js`, folders are lowercase. File names are case-sensitive on Linux (Vercel, Netlify, GitHub Actions), so an import must match the file name exactly. Run `npm run build` before every push.
+Naming: file names are case-sensitive on Linux (Vercel, Netlify, GitHub Actions), so an import must match the file name **exactly** (for example `../Hooks/useTasks`, `../utils/Filterparams`). The names above are the real ones on disk. Run `npm run build` before every push.
 
 ## 5a. Theme
 
@@ -219,7 +219,7 @@ Limits and option lists live in `src/utils/constants.js`; change them there once
 - **Extra routes:** besides the five required pages there is a read-only task page (`/tasks/:taskId`) and a 404 page.
 - **localStorage keys:** `taskflow.projects` and `taskflow.tasks`. A short artificial delay (350 ms) is added in localStorage mode so loading indicators are visible, like with a real API.
 - **Corrupted storage:** if the saved JSON is broken, the page shows an error banner; "Reset sample data" in the sidebar fixes it.
-- **ESLint:** not bundled. If you add the Vite ESLint template, `eslint-plugin-react-hooks` v7 may flag `reload()` inside the `useEffect` of `useTasks` / `useProjects` (`react-hooks/set-state-in-effect`). It is the standard fetch-on-mount pattern and works correctly; switch to a data-fetching library if you want to remove the warning.
+- **Lint:** `npm run lint` runs oxlint (config in `.oxlintrc.json`). It reports 0 errors and 2 warnings (`react/set-state-in-effect`) for the `reload()` call inside the `useEffect` of `useTasks` / `useProjects`. That is the standard fetch-on-mount pattern and works correctly; switch to a data-fetching library if you want to remove the warning.
 
 ## 8. Scripts
 
