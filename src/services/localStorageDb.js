@@ -1,4 +1,12 @@
 import { getSeedProjects, getSeedTasks } from '../data/seedData';
+import {
+  PROJECT_STATUS,
+  PROJECT_STATUS_OPTIONS,
+  TASK_PRIORITY,
+  TASK_PRIORITY_OPTIONS,
+  TASK_STATUS,
+  TASK_STATUS_OPTIONS,
+} from '../utils/constants';
 
 // A tiny "database" on top of localStorage. It is used when no backend is
 // configured, so projects and tasks survive a browser refresh.
@@ -16,6 +24,37 @@ const SEEDS = {
   tasks: getSeedTasks,
 };
 
+// Allowed values for the fields that have a fixed list (see utils/constants.js).
+const ALLOWED_VALUES = {
+  projects: { status: PROJECT_STATUS_OPTIONS },
+  tasks: { status: TASK_STATUS_OPTIONS, priority: TASK_PRIORITY_OPTIONS },
+};
+
+// Used when a saved record has a missing or wrong value for one of those fields.
+const DEFAULT_VALUES = {
+  projects: { status: PROJECT_STATUS.ACTIVE },
+  tasks: { status: TASK_STATUS.TODO, priority: TASK_PRIORITY.MEDIUM },
+};
+
+/**
+ * Returns a safe copy of one saved record, or null when it cannot be used at all
+ * (no id, or no text title/name). A wrong enum value (e.g. status: {} or
+ * priority: "Urgent") is replaced with the default instead of dropping the task.
+ * Exported so it can be unit tested.
+ */
+export function sanitizeRecord(name, item) {
+  if (!item || typeof item !== 'object' || item.id === undefined) return null;
+  if (typeof (item.title ?? item.name) !== 'string') return null;
+
+  const record = { ...item };
+  Object.entries(ALLOWED_VALUES[name]).forEach(([field, options]) => {
+    if (!options.includes(record[field])) {
+      record[field] = DEFAULT_VALUES[name][field];
+    }
+  });
+  return record;
+}
+
 const FAKE_LATENCY_MS = 350;
 const wait = (ms = FAKE_LATENCY_MS) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -30,12 +69,9 @@ function readCollection(name) {
       return seed;
     }
     const parsed = JSON.parse(raw);
-    // Drop anything that is not a record with an id and a text title/name
-    // (a damaged entry would otherwise crash the pages that render it).
     if (!Array.isArray(parsed)) return [];
-    return parsed.filter(
-      (item) => item && typeof item === 'object' && item.id !== undefined && typeof (item.title ?? item.name) === 'string',
-    );
+    // Repair or drop damaged entries so one bad record cannot crash the pages.
+    return parsed.map((item) => sanitizeRecord(name, item)).filter(Boolean);
   } catch {
     throw new Error('Could not read saved data from the browser storage.');
   }
