@@ -10,7 +10,7 @@ Data is stored in the browser's **localStorage** by default (works out of the bo
 
 | Tasks (search, filters, sorting) |
 | --- |
-| ![Tasks](public/03-projects.png) |
+| ![Tasks](public/03-tasks.png) |
 
 ---
 
@@ -109,7 +109,7 @@ Dashboard, Projects, Project Details, Tasks and Create/Edit Task pages with Reac
 task-management-dashboard/
 ├── public/
 │   ├── favicon.svg
-│   └── 01-dashboard.png, 02-projects.png, 03-projects.png   README screenshots (03 shows the Tasks page)
+│   └── 01-dashboard.png, 02-projects.png, 03-tasks.png   README screenshots
 ├── index.html
 ├── vercel.json                Sends every route to index.html (direct links work on Vercel)
 ├── .env.example               VITE_API_BASE_URL (leave empty for localStorage)
@@ -121,27 +121,27 @@ task-management-dashboard/
     ├── pages/                 One file per screen
     │   ├── Dashboard.jsx
     │   ├── Projects.jsx
-    │   ├── Projectdetails.jsx
+    │   ├── ProjectDetails.jsx
     │   ├── Tasks.jsx
-    │   ├── TaskForm.jsx       Create + edit (mode decided by the URL)
-    │   ├── Taskdetails.jsx    Read-only task view
+    │   ├── TaskFormPage.jsx   Create + edit (mode decided by the URL)
+    │   ├── TaskDetails.jsx    Read-only task view
     │   └── NotFound.jsx
     │
     ├── components/            Reusable, mostly presentational pieces
     │   ├── Layout.jsx, Navbar.jsx, Sidebar.jsx
     │   ├── ErrorBoundary.jsx  Catches render errors, offers "Reset sample data"
-    │   ├── Dashboardcard.jsx
+    │   ├── DashboardCard.jsx
     │   ├── ProjectCard.jsx, ProjectForm.jsx
     │   ├── TaskTable.jsx      Table on desktop, cards on mobile
-    │   ├── Taskform.jsx       One form for create AND edit
+    │   ├── TaskForm.jsx       One form for create AND edit
     │   ├── TaskFilters.jsx, SearchBar.jsx
     │   └── ConfirmDialog.jsx
     │
     ├── ui/                    Tiny generic blocks: Alert, Avatar, Badge, Button, Card,
     │                          DetailItem, EmptyState, FormField, Loader, Modal,
-    │                          OverTag, PageHeader, ProgressBar, controlClass
+    │                          OverdueTag, PageHeader, ProgressBar, controlClass
     │
-    ├── Hooks/                 useTasks, useProjects, useTaskFilters,
+    ├── hooks/                 useTasks, useProjects, useTaskFilters,
     │                          useConfirmDelete, useFlash, useDocumentTitle
     │
     ├── services/              The ONLY place that talks to data
@@ -151,14 +151,14 @@ task-management-dashboard/
     │
     ├── utils/                 Pure functions (no React)
     │   ├── taskHelpers.js, validators.js, dateHelpers.js, constants.js
-    │   ├── Filterparams.js    Filters <-> URL query string
+    │   ├── filterParams.js    Filters <-> URL query string
     │   └── csvExport.js       CSV export of the visible tasks
     │
     ├── data/seedData.js       Sample projects and tasks
     └── tests/                 Vitest tests for the pure functions
 ```
 
-Naming: file names are case-sensitive on Linux (Vercel, Netlify, GitHub Actions), so an import must match the file name **exactly** (for example `../Hooks/useTasks`, `../utils/Filterparams`). The names above are the real ones on disk. Run `npm run build` before every push.
+Naming: file names are case-sensitive on Linux (Vercel, Netlify, GitHub Actions), so an import must match the file name **exactly** (for example `../hooks/useTasks`, `../utils/filterParams`). The names above are the real ones on disk. Run `npm run build` before every push.
 
 ## 5a. Theme
 
